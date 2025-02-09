@@ -8,18 +8,16 @@
 # function that compares input to 42 or (case-insensitively) forty-two 
 # or forty two
 def answer(n):
-    if n == "42" or "forty-two" or "forty two":
+    if n in ("42","forty-two","forty two"):
         print("yes")
     else:
         print("no")
 
 # a main function
 def main():
-    question = "What is the answer to the Great Question of Life, \
-    the Universe and Everything"
-
+    question = "What is the answer to the Great Question of Life, the Universe and Everything?"
     text = input(question)
-
-    answer(text.lower())
+    text = text.lower()
+    answer(text)
 
 main()
