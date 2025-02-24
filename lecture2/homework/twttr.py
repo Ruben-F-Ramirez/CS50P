@@ -9,7 +9,7 @@ def get_prompt():
 # remove vowels from string
 def twttfy(prompt):
     for c in prompt:
-        if c.lower != "a" or c.lower != "e" or c.lower != "i" or c.lower != "o" or c.lower != "u":
+        if (c.lower() != 'a' and c.lower() != "e" and c.lower() != "i" and c.lower() != "o" and c.lower() != "u" ):
             print(c, end="")
 
 main()
