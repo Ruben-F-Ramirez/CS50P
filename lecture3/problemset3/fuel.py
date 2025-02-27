@@ -1,14 +1,26 @@
 
 def main():
     while True:
+        fuel = input("Fraction: ")
         try:
-            num, denom = input("Fraction: ").split(sep= '/')
+            num, denom = fuel.split(sep= '/')
+            num = int(num)
+            denom = int(denom)
+            percent = round(num / denom *100)
+            if percent <= 100:
+                break
+
         except (ValueError, ZeroDivisionError):
             pass
     
-    percent_tank(prompt)
+    percent_tank(percent)
 
-def percent_tank(prompt):
-    ...
+def percent_tank(percent):
+    if percent <= 1:
+        print("E")
+    elif percent >= 99:
+        print("F")
+    else:
+        print(f"{percent}%")
 
 main()
