@@ -10,16 +10,16 @@ def main():
             sort_items(groceries)
             break
 
-def get_item(groceries):
+def get_item(items):
     item = input().upper()
 
-    if item in groceries:
-        groceries[item] += 1
+    if item in items:
+        items[item] += 1
     else:
-        groceries[item] = 1
+        items[item] = 1
 
-def sort_items(groceries):
-    for i in sorted(groceries):
-        print(f"{groceries[i]} {i}")
+def sort_items(list):
+    for i in sorted(list):
+        print(f"{list[i]} {i}")
 
 main()
