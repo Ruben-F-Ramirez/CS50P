@@ -1,4 +1,4 @@
-month = [
+months = [
     "January",
     "February",
     "March",
@@ -16,13 +16,34 @@ month = [
 
 
 def main():
-    date = get_input()
-    convert_date()
+    while True:
+        try:
+            old_date = input("Enter date in the format MM/DD/YYYY or September 1, 2025\n").capitalize()
+            old_date = refine_date(old_date)
+            month, day, year = old_date.split()
+            try:
+                if month.isnumeric():
+                    month = int(month)
+                    day = int(day)
+                if (1 <= month <= 12 and 1 <= day <= 31):
+                    convert_date(month, day, year)
+                    break
+            except TypeError:
+                pass
 
-def get_input() -> str:
-    return input("Enter date in the format MM/DD/YYYY or September 1, 2025\n")
+            month = months.index(month)
+            convert_date(month, day, year)
+            break
+            
 
-def convert_date():
-    ...
+        except ValueError:
+            pass
+
+def refine_date(date):
+    return date.replace("/", " ").replace(",", "")
+
+
+def convert_date(month, day, year):
+    print(f"{year}/{month:02}/{day:02}")
 
 main()
