@@ -24,16 +24,15 @@ def main():
             try:
                 if month.isnumeric():
                     month = int(month)
-                    day = int(day)
-                if (1 <= month <= 12 and 1 <= day <= 31):
+                if (1 <= month <= 12 and 1 <= int(day) <= 31):
                     convert_date(month, day, year)
                     break
             except TypeError:
                 pass
-
-            month = months.index(month)
-            convert_date(month, day, year)
-            break
+            if 1 <= int(day) <= 31:
+                month = months.index(month)
+                convert_date(month, day, year)
+                break
             
 
         except ValueError:
