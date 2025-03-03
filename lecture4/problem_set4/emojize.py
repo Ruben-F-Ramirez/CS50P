@@ -1,8 +1,9 @@
 # install emoji module : pip install emoji
 import emoji
-import sys
 
 
-if len(sys.argv) != 2:
-    sys.exit
+def main():
+    emo = input("Input: ")
+    print("Output: " + emoji.emojize(emo, language='alias'))
 
+main()
