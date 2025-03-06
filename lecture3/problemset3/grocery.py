@@ -11,7 +11,7 @@ def main():
             break
 
 def get_item(items):
-    item = input().upper()
+    item = input("Item: ").upper()
 
     if item in items:
         items[item] += 1
