@@ -1,5 +1,6 @@
 
 from calculator import square
+import pytest
 
 def test_pos():
     assert square(2) == 4
