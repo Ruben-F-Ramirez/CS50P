@@ -12,9 +12,9 @@ def main():
 
 def convert(fraction: str) -> int:
         num, denom = fraction.split(sep= '/')
-        if not num.isdigit():
+        if num.isdigit() is False:
             raise ValueError
-        if not denom.isdigit():
+        if denom.isdigit() is False:
             raise ValueError
         if denom == "0":
             raise ZeroDivisionError
