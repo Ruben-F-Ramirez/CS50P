@@ -19,3 +19,10 @@ def test_str():
 def test_big_num():
     with pytest.raises(ValueError):
         convert("4/3")
+
+def test_gauge():
+    assert gauge(1) == "E"
+    assert gauge(0) == "E"
+    assert gauge(99) == "F"
+    assert gauge(100) == "F"
+    assert gauge(45) == "45%"
