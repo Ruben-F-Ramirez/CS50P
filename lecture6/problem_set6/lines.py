@@ -5,6 +5,7 @@ import sys
 def main():
     file_check()
     line_count = file_read()
+    print(line_count)
 
 
 def file_read():
