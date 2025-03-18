@@ -3,6 +3,16 @@ import csv
 
 def main():
     file_check()
+    file_read()
+
+def file_scourgified(students):
+    for student in students:
+        with open(sys.argv[2], "a") as file:
+            writer = csv.DictWriter(file, fieldnames=["first name", "last name", "house"])
+            writer.writerow({"first name": student['first_name'], "last name": student['last_name'], "house": student['house']})
+
+def file_scourge():
+    ...
 
 def file_read():
     try:
@@ -10,10 +20,9 @@ def file_read():
         with open(sys.argv[1]) as file:
             reader = csv.DictReader(file)
             for row in reader:
-                students.append({"name": row["name"], "home": row["home"]})
-
-        for student in sorted(students, key=lambda student: student["name"]):
-            print(f"{student['name']} is from {student['home']}")
+                students.append({"name": row["name"], "house": row["house"]})
+        for student in students:
+            print(f"{student['name']} is from {student['house']}")
     except FileNotFoundError:
         sys.exit(f"Could not read {sys.argv[1]}")
 
