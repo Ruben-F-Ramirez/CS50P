@@ -10,11 +10,16 @@ def main():
 
 def file_read():
     try:
-        lines = 0
+        count = 0
         with open(sys.argv[1]) as file:
             for line in file:
-                lines += 1
-            return lines
+                if line.lstrip().startswith("#"):
+                    pass
+                elif line.isspace():
+                    pass
+                else:
+                    count += 1
+            return count
     except FileNotFoundError:
         sys.exit("File does not exist")
 
