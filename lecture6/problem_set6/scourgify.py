@@ -3,16 +3,22 @@ import csv
 
 def main():
     file_check()
-    file_read()
+    before = file_read()
+    after = file_scourge(before)
+    file_scourgified(after)
 
 def file_scourgified(students):
-    for student in students:
-        with open(sys.argv[2], "a") as file:
-            writer = csv.DictWriter(file, fieldnames=["first name", "last name", "house"])
-            writer.writerow({"first name": student['first_name'], "last name": student['last_name'], "house": student['house']})
+    with open(sys.argv[2], "a",newline='') as file:
+        writer = csv.DictWriter(file, fieldnames=["first", "last", "house"])
+        writer.writeheader()
+        writer.writerows(students)
 
-def file_scourge():
-    ...
+def file_scourge(before_list):
+    after_list = []
+    for row in before_list:
+        last, first = row['name'].split(",")
+        after_list.append({'first': first.lstrip(), 'last': last, 'house': row['house']})
+    return after_list
 
 def file_read():
     try:
@@ -21,8 +27,7 @@ def file_read():
             reader = csv.DictReader(file)
             for row in reader:
                 students.append({"name": row["name"], "house": row["house"]})
-        for student in students:
-            print(f"{student['name']} is from {student['house']}")
+        return students
     except FileNotFoundError:
         sys.exit(f"Could not read {sys.argv[1]}")
 
