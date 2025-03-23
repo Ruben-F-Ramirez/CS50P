@@ -2,6 +2,6 @@ import re
 
 url = input("URL: ").strip()
 
-username = re.sub(r"^(https?://)?(www\.)?twitter\.com/","",url)
-
-print(f"username is {username}")
+mathches = re.search(r"^(https?://)?(www\.)?twitter\.com/(.+)$",url,re.IGNORECASE)
+if mathches:
+    print(f"username is {mathches.group(3)}")
