@@ -22,6 +22,7 @@ def convert(s: str) -> str:
     if not time:
         raise ValueError
     
+    # check for valid hour
     if not 1 <= int(time.group(1)) <= 12:
         raise ValueError
     
