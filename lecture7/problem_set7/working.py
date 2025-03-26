@@ -52,11 +52,11 @@ def convert(s: str) -> str:
 
     # convert hour
     if (time.group(4) == 12) and (meridian == 0):
-        hour1 = 0
+        hour2 = 0
     elif (time.group(4) == 12) and (meridian == 12):
-        hour1 = 12
+        hour2 = 12
     else:
-        hour1 = int(time.group(4)) + meridian
+        hour2 = int(time.group(4)) + meridian
 
     # convert minutes
     if time.group(5) == None:
