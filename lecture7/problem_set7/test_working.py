@@ -3,13 +3,17 @@ import pytest
 from working import convert
 
 
+def main():
+    test_convert_time()
+    test_valerror()
+
 def test_convert_time():
-    assert convert("9 AM to 5 PM") == "0900 to 1700"
-    assert convert("9:00 AM to 5 PM") == "0900 to 1700"
-    assert convert("9:00 AM to 5:00 PM") == "0900 to 1700"
-    assert convert("9 AM to 5:00 PM") == "0900 to 1700"
-    assert convert("9:50 AM to 5 PM") == "0950 to 1700"
-    assert convert("9 AM to 5:23 PM") == "0900 to 1723"
+    assert convert("9 AM to 5 PM") == "09:00 to 17:00"
+    assert convert("9:00 AM to 5 PM") == "09:00 to 17:00"
+    assert convert("9:00 AM to 5:00 PM") == "09:00 to 17:00"
+    assert convert("9 AM to 5:00 PM") == "09:00 to 17:00"
+    assert convert("9:50 AM to 5 PM") == "09:50 to 17:00"
+    assert convert("9 AM to 5:23 PM") == "09:00 to 17:23"
 
 def test_valerror():
     with pytest.raises(ValueError):
@@ -25,3 +29,5 @@ def test_valerror():
         convert("9:00 AM to 5:80 PM")
 
     
+if __name__ == "__main__":
+    main()

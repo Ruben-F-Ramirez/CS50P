@@ -18,9 +18,15 @@ def convert(s: str) -> str:
     >>> convert(9:00 AM to 5:00 PM)
     0900 to 1700
     """
-    time = re.search(r"^(\d{1,2}):?(\d{2})? (AM|PM) to (\d{1,2}):?(\d{2})? (AM|PM)$",s)
+    time = re.search(r"^(\d{1,2}):?([0-5][0-9])? (AM|PM) to (\d{1,2}):?([0-5][0-9])? (AM|PM)$",s)
     if not time:
         raise ValueError
+    
+    if not 1 <= int(time.group(1)) <= 12:
+        raise ValueError
+    
+    if not 1 <= int(time.group(4)) <= 12:
+        raise ValueError    
 
     # convert first time
     if time.group(3) == "AM":
@@ -28,9 +34,9 @@ def convert(s: str) -> str:
     else:
         meridian = 12
 
-    if (time.group(1) == 12) and (meridian == 0):
+    if (time.group(1) == "12") and (meridian == 0):
         hour1 = 0
-    elif (time.group(1) == 12) and (meridian == 12):
+    elif (time.group(1) == "12") and (meridian == 12):
         hour1 = 12
     else:
         hour1 = int(time.group(1)) + meridian
@@ -40,10 +46,6 @@ def convert(s: str) -> str:
     else:
         minutes1 = int(time.group(2))
 
-    # check for valid minutes
-    if not (0 <= minutes1 <= 59):
-        raise ValueError
-
     # convert second time
     if time.group(6) == "AM":
         meridian = 0
@@ -51,9 +53,9 @@ def convert(s: str) -> str:
         meridian = 12
 
     # convert hour
-    if (time.group(4) == 12) and (meridian == 0):
+    if (time.group(4) == "12") and (meridian == 0):
         hour2 = 0
-    elif (time.group(4) == 12) and (meridian == 12):
+    elif (time.group(4) == "12") and (meridian == 12):
         hour2 = 12
     else:
         hour2 = int(time.group(4)) + meridian
@@ -64,15 +66,7 @@ def convert(s: str) -> str:
     else:
         minutes2 = int(time.group(5))
 
-    # check for valid minutes
-    if not (0 <= minutes2 <= 59):
-        raise ValueError
-
-
     return f"{hour1:02}:{minutes1:02} to {hour2:02}:{minutes2:02}"
-
-
-...
 
 
 if __name__ == "__main__":
