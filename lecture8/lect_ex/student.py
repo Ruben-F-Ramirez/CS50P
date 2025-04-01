@@ -7,8 +7,8 @@ class Student:
         self.name = name
         self.house = house
 
-        def __str__(self):
-            return "A student"
+    def __str__(self):
+        return f"{self.name} from {self.house}"
 
 
 
