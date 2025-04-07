@@ -9,7 +9,7 @@ class Jar:
                 raise ValueError
             self.capacity = capacity
         except ValueError:
-            sys.exit
+            sys.exit("Invalid capacity")
 
 
     def __str__(self):
@@ -28,3 +28,10 @@ class Jar:
     @property
     def size(self):
         ...
+
+def main():
+    testJar = Jar(-1)
+
+
+if __name__ == "__main__":
+    main()
