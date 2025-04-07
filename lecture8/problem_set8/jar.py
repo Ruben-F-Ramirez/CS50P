@@ -1,6 +1,16 @@
+import sys
+
+
+
 class Jar:
     def __init__(self, capacity=12):
-        ...
+        try:
+            if capacity < 0:
+                raise ValueError
+            self.capacity = capacity
+        except ValueError:
+            sys.exit
+
 
     def __str__(self):
         ...
