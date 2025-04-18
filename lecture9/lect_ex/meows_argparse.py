@@ -1,7 +1,5 @@
-"""
-a program using the argparser library
-to pass arg flags
-"""
+#a program using the argparser library
+#to pass arg flags
 
 
 import argparse
