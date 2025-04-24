@@ -1,7 +1,6 @@
 
 students = ["Hermione", "Harry", "Ron"]
 
-gryffindors = []
+gryffindors = [{"name": name, "house": "Gryffindor"} for student in students]
 
-for student in students:
-    gryffindors.append({"name": student, "House": "Gryffindor"})
+print(gryffindors)
